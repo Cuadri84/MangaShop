@@ -1,12 +1,19 @@
 const express = require('express');
 const path = require('path');
 
+
+
+//conexion con mongo
+const { mongoose } = require ('./database');
+
+
+
 const app = express();
 
-// Serve the static files from the React app
+// Archivos estaticos
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// An api endpoint that returns a short list of items
+// Lista de mangas
 app.get('/api/getList', (req,res) => {
     var list = ["item1", "item2", "tercero"]; //este array es el que nos va a mostrar al final, aqui sera seguramente la llamada a la base de datos
     res.json(list);
